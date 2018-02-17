@@ -8,7 +8,7 @@ def queue(request):
     return render(request, 'waitlist/page.html')
 
 def data(request):
-    increment = request.POST.get("delta")
+    increment = request.GET.get("delta")
     if (increment == 1):
         queue.append(1)
     else:
