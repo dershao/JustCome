@@ -1,9 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="{% static 'waitlist/script.js' %}"></script>
     <title>Wait List</title>
   </head>
   <body>
-    <button type="button">Enque</button>
+    <button id="enque" type="button">Enque</button>
   </body>
 </html>
