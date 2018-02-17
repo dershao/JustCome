@@ -31,11 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-<<<<<<< HEAD
-    'waitlist',
-=======
     'waitlist.apps.WaitlistConfig',
->>>>>>> 5f4a5dcbf575419cf6841538ef236cd86260e9c2
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
