@@ -17,6 +17,6 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^waitlist/', include('waitlist.urls')),
+    url(r'^JustCome/', include('waitlist.urls')),
     url(r'^admin/', admin.site.urls),
 ]
