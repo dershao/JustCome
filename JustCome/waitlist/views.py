@@ -11,7 +11,9 @@ auth_token = "effe642c95803d5907f0ae04aa53fb13"
 client = Client(account_sid, auth_token)
 
 def home(request):
-    return render(request, "waitlist/JustCome.html")
+    low = Patient.Manager.filter(priority="low")
+
+    return render(request, "waitlist/JustCome.html", {"patient_low": low})
 
 num = head = 0
 def enqueue(request):
