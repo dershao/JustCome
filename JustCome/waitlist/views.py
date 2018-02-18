@@ -4,8 +4,6 @@ from django.db import IntegrityError
 from .models import Patient
 from django.urls import reverse
 from twilio.rest import Client
-import json
-
 
 #Authentication Information for Twili API
 account_sid = "AC7be8973e6f7a945d7707b14d220bb20c"
@@ -25,10 +23,10 @@ def enqueue(request):
     patient = Patient(patientID=id, phoneNumber=number, priority=p, index=index)
     patient.save()
     index += 1
-    message = client.messages.create( 
-        to="+1"+number, 
-        from_="+18737388248", 
-        body="Thank you, you will be contacted when is is almost your turn.")
+    message = client.messages.create(
+        to="+1"+number,
+        from_="+18737388248",
+        body="Thank you, you will be contacted when it is almost your turn.")
     return HttpResponse("Success")
 
 def dequeue(request):
@@ -37,23 +35,24 @@ def dequeue(request):
 
     #Filter through the database via phone number (guaranteed to be unique)
     patient = Patient.Manager.filter(phoneNumber=number)
-    message = client.messages.create( 
-        to="+1" + patient[0].phoneNumber, 
-        from_="+18737388248", 
+    message = client.messages.create(
+        to="+1" + patient[0].phoneNumber,
+        from_="+18737388248",
         body="Someone is ready to see you now.")
     patient.delete()
     return HttpResponse("Success")
 
 def reply(request):
-    patient = Patient.Manager.filter(phoneNumber)
+    phoneNumber = request.GET.get("From")
+    patient = Patient.Manager.filter(phoneNumber=phoneNumber[2:])
     count = 1;
-    for patients in Patient.Manager.filter(patient[0].priority):
+    for patients in Patient.Manager.filter(priority=patient[0].priority):
         if (patients.index < patient[0].index):
             count += 1
-    message = client.messages.create( 
-        to="+1" + phoneNumber, 
-        from_="+18737388248", 
-        body="You are number" + count + " in line.")
+    message = client.messages.create(
+        to=phoneNumber,
+        from_="+18737388248",
+        body="You are number " + str(count) + " in line.")
 
 def home(request):
     #Get the records for each of the priorities
