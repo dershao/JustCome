@@ -1,21 +1,21 @@
 $(document).ready(function() {
-
-
-
-  //THis is te code for enqueuing
+  //This is te code for enqueuing
   $("#submit").click(function() {
-    var id = $("#phone").val();
-    var priority = $("#priority").val();
+    var id = $("#id").val();
+    var number = $("#phoneNumber").val();
+    var priority = $("#priority-select").val();
     $.ajax({
             url:"/JustCome/waitlist/enqueue",
             type: "get",
             data: {
               patientID: id,
+              phoneNumber: number,
               priority: priority,
             },
             dataType: "json",
             success: function(response) {
-              alert("Data sent");
+              alert("Success");
+              location.reload(true);
             },
             failure: function(xhr) {
               alert("failed");
@@ -28,18 +28,18 @@ $(document).ready(function() {
     dropdown.toggle();
   });
 
-  window.onclick = function(event) {
-    if (!event.target.matches('.patient_button')) {
-      var dropdowns = document.getElementsByClassName(".dropdown-content");
-      var i;
-      for (i = 0; i < dropdowns.length; i++) {
-        var openDropDown = dropdowns[i];
-        if (openDropDown.classList.contains('show')) {
-          openDropDown.classList.remove('show');
-        }
-      }
-    }
-  }
+  // window.onclick = function(event) {
+  //   if (!event.target.matches('.patient_button')) {
+  //     var dropdowns = document.getElementsByClassName(".dropdown-content");
+  //     var i;
+  //     for (i = 0; i < dropdowns.length; i++) {
+  //       var openDropDown = dropdowns[i];
+  //       if (openDropDown.classList.contains('show')) {
+  //         openDropDown.classList.remove('show');
+  //       }
+  //     }
+  //   }
+  // }
 });
 
 //Function to dequue a patient
@@ -50,6 +50,7 @@ function dequeue(phoneNumber){
       phoneNumber : phoneNumber,
     },
     type: "GET",
+    dataType: "json",
     success: function(data) {
       location.reload(true);
     },
