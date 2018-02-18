@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Patient
+from django.urls import reverse
 from twilio.rest import Client
 import json
 
@@ -33,7 +34,8 @@ def enqueue(request):
 
     num = num + 1
     patient.save()
-    return HttpResponseRedirect("home")
+
+    return HttpResponse("Sent")
 
 def dequeue(request):
 	global head
@@ -41,4 +43,4 @@ def dequeue(request):
 	message = client.messages.create( to="+1" + patient[0].patientID, from_="+18737388248", body="Hello I hate you")
 	patient.delete()
 	head = head + 1;
-	return HttpResponse("Please Work")
+	return HttpResponse('Deleted')
