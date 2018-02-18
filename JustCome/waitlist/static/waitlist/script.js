@@ -1,19 +1,18 @@
 $(document).ready(function() {
-
   //THis is te code for enqueuing
   $("#submit").click(function() {
     var id = $("#phone").val();
     var priority = $("#priority").val();
     $.ajax({
             url:"/JustCome/waitlist/enqueue",
-            type: "get",
+            type: "GET",
             data: {
               patientID: id,
               priority: priority,
             },
             dataType: "json",
             success: function(response) {
-              alert("Data sent");
+              location.reload(true);
             },
             failure: function(xhr) {
               alert("failed");
@@ -26,7 +25,7 @@ $(document).ready(function() {
             url: "/JustCome/waitlist/dequeue",
             type: "GET",
             success: function(data) {
-              alert(data);
+              location.reload(true);
             },
             failure: function(xhr) {
               alert(xhr);

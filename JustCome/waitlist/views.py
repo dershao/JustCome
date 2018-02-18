@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
+from django.db import IntegrityError
 from .models import Patient
+from django.urls import reverse
 from twilio.rest import Client
 import json
 
@@ -12,10 +14,13 @@ client = Client(account_sid, auth_token)
 
 def home(request):
     low = Patient.Manager.filter(priority="low")
+    medium = Patient.Manager.filter(priority="medium")
+    high = Patient.Manager.filter(priority="high")
 
-    return render(request, "waitlist/JustCome.html", {"patient_low": low})
+    return render(request, "waitlist/JustCome.html", {"patient_low": low, "patient_medium":medium, "patient_high":high})
 
 num = head = 0
+
 def enqueue(request):
     id = request.GET.get("patientID")
     p = request.GET.get("priority")
@@ -33,7 +38,7 @@ def enqueue(request):
 
     num = num + 1
     patient.save()
-    return HttpResponseRedirect("home")
+    return HttpResponse({id:1})
 
 def dequeue(request):
 	global head
@@ -41,9 +46,4 @@ def dequeue(request):
 	message = client.messages.create( to="+1" + patient[0].patientID, from_="+18737388248", body="Hello I hate you")
 	patient.delete()
 	head = head + 1;
-	return HttpResponse("Please Work")
-
-def nurse(request):
-    low = Patient.Manager.filter(priority="low")
-
-    return render(request, "waitlist/NurseMain.html", {"patient_low": low})
+	return HttpResponse({id:1})
