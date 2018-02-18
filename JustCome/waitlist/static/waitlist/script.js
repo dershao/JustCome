@@ -30,13 +30,10 @@ $(document).ready(function() {
 
   window.onclick = function(event) {
     if (!event.target.matches('.patient_button')) {
-      var dropdowns = document.getElementsByClassName(".dropdown-content");
+      var dropdowns = document.getElementsByClassName("dropdown-content");
       var i;
       for (i = 0; i < dropdowns.length; i++) {
-        var openDropDown = dropdowns[i];
-        if (openDropDown.classList.contains('show')) {
-          openDropDown.classList.remove('show');
-        }
+        dropdowns[i].style.display = 'none';
       }
     }
   }
@@ -59,11 +56,12 @@ function dequeue(phoneNumber){
   });
 }
 
-function movePrioritys(patientID){
+function movePriorities(patientID, priority){
   $.ajax({
-    url: "/JustCome/waitlist/dequeue",
+    url: "/JustCome/waitlist/move",
     data:{
       patientID : patientID,
+      priority : priority
     },
     type: "GET",
     success: function(data) {

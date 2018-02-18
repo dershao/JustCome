@@ -24,43 +24,43 @@
 
 <!-- Grid -->
 <div class="ui-grid-c">
-  	<div class="ui-block-a"><b>High Priority</b>
+  	<div class="ui-block-a"><b><center>High Priority</center></b>
       <div>
         {% for high in patient_high %}
           <div class="patient">
             <button class="patient_button">{{high.patientID}}</button>
             <div class="dropdown-content">
-              <a href = "" onclick= "dequeue({{high.phoneNumber}})">Delete</a>
-              <a href="">Change to Low Priority</a>
-              <a href="">Change to Medium Priority</a>
+              <a onclick= "dequeue({{high.phoneNumber}})">Delete</a>
+              <a onclick="movePriorities({{high.patientID}}, 'low')">Change to Low Priority</a>
+              <a onclick="movePriorities({{high.patientID}}, 'medium')">Change to Medium Priority</a>
             </div>
           </div>
         {% endfor %}
       </div>
     </div>
- 	 <div class="ui-block-b"><b>Medium Priority</b>
+ 	  <div class="ui-block-b"><b><center>Medium Priority</center></b>
      <div>
        {% for medium in patient_medium %}
          <div class="patient">
            <button class="patient_button">{{medium.patientID}}</button>
            <div class="dropdown-content">
-             <a href = "" onclick= "dequeue({{medium.phoneNumber}})">Delete</a>
-             <a href="">Change to Medium Priority</a>
-             <a href="">Change to High Priority</a>
+             <a onclick="dequeue({{medium.phoneNumber}})">Delete</a>
+             <a onclick="movePriorities({{medium.patientID}}, 'low')">Change to Low Priority</a>
+             <a onclick="movePriorities({{medium.patientID}}, 'high')">Change to High Priority</a>
            </div>
          </div>
        {% endfor %}
      </div>
    </div>
- 	 <div class="ui-block-c"><b>Low Priority</b>
+ 	 <div class="ui-block-c"><b><center>Low Priority</center></b>
      <div>
        {% for low in patient_low %}
          <div class="patient">
            <button class="patient_button">{{low.patientID}}</button>
            <div class="dropdown-content">
-             <a href = "" onclick= "dequeue({{low.phoneNumber}})">Delete</a>
-             <a href="">Change to High Priority</a>
-             <a href="">Change to Medium Priority</a>
+             <a onclick="dequeue({{low.phoneNumber}})">Delete</a>
+             <a onclick="movePriorities({{low.patientID}}, 'high')">Change to High Priority</a>
+             <a onclick="movePriorities({{low.patientID}}, 'medium')">Change to Medium Priority</a>
            </div>
          </div>
        {% endfor %}
@@ -71,18 +71,19 @@
  	 <!-- New Patient -->
 	<div class="row">
 		<div class="col-md-6 col-xs-12">
-		<form name="fm">
-			<center><h2>New Patient</h2></center>
-      <label for="tel"><b>ID:</b></label>
-      <label for="textinput-hide" class="ui-hidden-accessible">Identification</label>
-      <input type="text" name="textinput-hide" id="textinput-hide" placeholder="Text input" value="">
-			<label for="tel"><b>Tel:</b></label>
-			<label for="textinput-hide" class="ui-hidden-accessible">Telephone</label>
-			<input type="text" name="textinput-hide" id="textinput-hide" placeholder="Text input" value="">
-      <label for="tel"><b>Priority:</b></label>
-			<label for="textinput-hide" class="ui-hidden-accessible">Priority</label>
-			<input type="text" name="textinput-hide" id="textinput-hide" placeholder="Text input" value="">
-		</form>
+			<form name="fm">
+				<center><h2>New Patient</h2></center>
+				<label><b>Tel:</b></label>
+				<input type="text" name="textinput-hide" id="textinput-hide" placeholder="Text input" value="">
+	      <label for="priority"><b>Priority:</b></label>
+	      <select id="priority-select" name="priority">
+	        <option value="high">High</option>
+	        <option value="medium">Medium</option>
+	        <option value="low">Low</option>
+	      </select>
+	      <label for="tel"><b>Submit</b></label>
+	      <input type="submit" name="textinput-hide">
+			</form>
 	</div>
 	</div>
 </div>
