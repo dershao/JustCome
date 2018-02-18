@@ -1,4 +1,5 @@
 from django.shortcuts import render
+<<<<<<< HEAD
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Patient
 import json
@@ -32,3 +33,17 @@ def enque(request):
 
 def success(request):
     return render(request, "waitlist/page.html")
+=======
+
+from django.http import HttpResponse
+#from .models import Patient
+from twilio.rest import Client
+
+account_sid = "AC7be8973e6f7a945d7707b14d220bb20c"
+auth_token = "effe642c95803d5907f0ae04aa53fb13"
+client = Client(account_sid, auth_token)
+
+def dequeue(request):
+	message = client.messages.create( to="+16139864968", from_="+18737388248", body="Please work")
+	return HttpResponse("Please Work")
+>>>>>>> 50f3cd2c187913c0b9c3fccc7523adf5550619e1
