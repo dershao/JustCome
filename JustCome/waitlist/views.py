@@ -1,14 +1,19 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Patient
+from twilio.rest import Client
 import json
 
-# Create your views here.
+
+#Authentication Information for Twili API
+account_sid = "AC7be8973e6f7a945d7707b14d220bb20c"
+auth_token = "effe642c95803d5907f0ae04aa53fb13"
+client = Client(account_sid, auth_token)
 
 def home(request):
     return render(request, "waitlist/JustCome.html")
 
-num = 0
+num = head = 0
 def enqueue(request):
     id = request.GET.get("patientID")
     p = request.GET.get("priority")
@@ -25,23 +30,13 @@ def enqueue(request):
     print("patient position ", patient.position)
 
     num = num + 1
-
-    p.save()
-
+    patient.save()
     return HttpResponseRedirect("home")
 
-from django.http import HttpResponse
-#from .models import Patient
-from twilio.rest import Client
-
-account_sid = "AC7be8973e6f7a945d7707b14d220bb20c"
-auth_token = "effe642c95803d5907f0ae04aa53fb13"
-client = Client(account_sid, auth_token)
-
 def dequeue(request):
-	message = client.messages.create( to="+16139864968", from_="+18737388248", body="Please work")
+	global head
+	patient = Patient.Manager.filter(position=head)
+	message = client.messages.create( to="+1" + patient[0].patientID, from_="+18737388248", body="Hello I hate you")
+	patient.delete()
+	head = head + 1;
 	return HttpResponse("Please Work")
-<<<<<<< HEAD
-
-=======
->>>>>>> e25cf3b807f8a181de2b03e304c83ba61bbdaade
