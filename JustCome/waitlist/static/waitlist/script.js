@@ -31,6 +31,6 @@ $(document).ready(function() {
               alert("failed");
             },
           });
+    location.reload();
   });
-  location.reload();
 });
