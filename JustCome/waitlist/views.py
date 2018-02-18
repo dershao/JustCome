@@ -20,14 +20,14 @@ def enqueue(request):
 
     patient = Patient(patientID=id, phoneNumber=number, priority=p)
     patient.save()
-    return HttpResponse({id:1})
+    return HttpResponse('success')
 
 def dequeue(request):
     number = request.GET.get("phoneNumber")
     patient = Patient.Manager.filter(phoneNumber=number)
     message = client.messages.create( to="+1" + patient[0].phoneNumber, from_="+18737388248", body="I love you")
     patient.delete()
-    return HttpResponse({id:1})
+    return HttpResponse('success')
 
 def home(request):
     low = Patient.Manager.filter(priority="low")

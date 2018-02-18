@@ -6,15 +6,13 @@ $(document).ready(function() {
     var priority = $("#priority-select").val();
     $.ajax({
             url:"/JustCome/waitlist/enqueue",
-            type: "get",
+            type: "GET",
             data: {
               patientID: id,
               phoneNumber: number,
               priority: priority,
             },
-            dataType: "json",
             success: function(response) {
-              alert("Success");
               location.reload(true);
             },
             failure: function(xhr) {
@@ -50,13 +48,12 @@ function dequeue(phoneNumber){
       phoneNumber : phoneNumber,
     },
     type: "GET",
-    dataType: "json",
     success: function(data) {
       location.reload(true);
     },
     failure: function(xhr) {
       alert(xhr);
-    }
+    },
   });
 }
 
@@ -72,6 +69,6 @@ function movePrioritys(patientID){
     },
     failure: function(xhr) {
       alert(xhr);
-    }
+    },
   });
 }
