@@ -1,0 +1,51 @@
+<!DOCTYPE html> 
+<html>
+<head>
+	<!--ltf.suensir.idv.hk-->
+	<title>DoctorMain</title>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
+	<!-- /MyScript -->
+	<script src="password.js"></script>
+	 <script language="JavaScript">
+    function login(x,y){
+    if ((x=="Doctor")&&(y=="come")) {
+    window.location="DoctorMain.html"    //code
+    }
+    else{
+    window.alert("Wrong username or password~");
+    }
+	}
+</script>
+
+</head>
+
+
+<body>
+<!-- Start of first page -->
+
+	<!--Panel-->
+	<div data-role="page" class="jqm-demos ui-responsive-panel" id="Just Come" data-title="Just Come" data-url="panel-responsive-page1">
+		<div data-role="header">
+			<h1><font size=5>Just Come!!</font></h1>
+	</div><!-- /header -->
+	<div role="main" class="ui-content jqm-content jqm-fullwidth">
+		<div data-demo-html="#panel-responsive-page1"></div>
+	</div><!-- /content -->
+
+		<div role="main" class="ui-content" align=center>
+		<form name="fm">
+			<h1>Doctors and Nurses Login</h1>
+			 <p>"(User:Doctor Password:come)"</p>
+			 <b>User:</b><input type="text" name="usr"<br>
+			 <b>Password:</b><input type="password" name="pwd"><br>
+			 <input type="button" value="Continue" onclick="login(fm.usr.value,fm.pwd.value)">
+		</form>
+	</div><!-- /password -->
+	
+</div><!-- /page -->
+
+
+
+</body>
