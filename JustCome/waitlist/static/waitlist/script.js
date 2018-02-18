@@ -1,11 +1,15 @@
 $(document).ready(function() {
+  var id = "6131231234"
+  var priority = "high"
   $("#enque").click(function() {
     $.ajax({
-            url:"/JustCome/waitlist/data",
+            url:"/JustCome/waitlist/enque",
             type: "get",
             data: {
-              delta: 1,
+              patientID: id,
+              priority: priority,
             },
+            dataType: "json",
             success: function(response) {
               alert("Data sent");
             },
