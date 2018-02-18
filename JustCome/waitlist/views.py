@@ -13,15 +13,18 @@ auth_token = "effe642c95803d5907f0ae04aa53fb13"
 client = Client(account_sid, auth_token)
 
 
+index = 0;
 def enqueue(request):
     #Get the information from the request
     id = request.GET.get("patientID")
     p = request.GET.get("priority")
     number = request.GET.get("phoneNumber")
+    global index
 
     #Create a new patient record
-    patient = Patient(patientID=id, phoneNumber=number, priority=p)
+    patient = Patient(patientID=id, phoneNumber=number, priority=p, index=index)
     patient.save()
+    index += 1
     message = client.messages.create( 
         to="+1"+number, 
         from_="+18737388248", 
@@ -40,6 +43,17 @@ def dequeue(request):
         body="Someone is ready to see you now.")
     patient.delete()
     return HttpResponse("Success")
+
+def reply(request):
+    patient = Patient.Manager.filter(phoneNumber)
+    count = 1;
+    for patients in Patient.Manager.filter(patient[0].priority):
+        if (patients.index < patient[0].index):
+            count += 1
+    message = client.messages.create( 
+        to="+1" + phoneNumber, 
+        from_="+18737388248", 
+        body="You are number" + count + " in line.")
 
 def home(request):
     #Get the records for each of the priorities
