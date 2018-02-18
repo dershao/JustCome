@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
+from django.db import IntegrityError
 from .models import Patient
 from twilio.rest import Client
 import json
@@ -16,6 +17,7 @@ def home(request):
     return render(request, "waitlist/JustCome.html", {"patient_low": low})
 
 num = head = 0
+
 def enqueue(request):
     id = request.GET.get("patientID")
     p = request.GET.get("priority")
@@ -33,7 +35,7 @@ def enqueue(request):
 
     num = num + 1
     patient.save()
-    return HttpResponseRedirect("home")
+    return HttpResponse("Worked")
 
 def dequeue(request):
 	global head

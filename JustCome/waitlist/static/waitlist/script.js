@@ -7,14 +7,13 @@ $(document).ready(function() {
     var priority = $("#priority").val();
     $.ajax({
             url:"/JustCome/waitlist/enqueue",
-            type: "get",
+            type: "GET",
             data: {
               patientID: id,
               priority: priority,
             },
             dataType: "json",
             success: function(response) {
-              alert("Data sent");
             },
             failure: function(xhr) {
               alert("failed");
