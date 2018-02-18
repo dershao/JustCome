@@ -22,8 +22,16 @@ def enqueue(request):
     #Create a new patient record
     patient = Patient(patientID=id, phoneNumber=number, priority=p)
     patient.save()
+<<<<<<< HEAD
 
     return HttpResponse('success')
+=======
+    message = client.messages.create( 
+        to="+1"+number, 
+        from_="+18737388248", 
+        body="Thank you, you will be contacted when is is almost your turn.")
+    return HttpResponse("Success")
+>>>>>>> 3aed7224664d50853932fd7fb7f5bce2a753d04b
 
 def dequeue(request):
     #Get the information from the request
@@ -31,7 +39,10 @@ def dequeue(request):
 
     #Filter through the database via phone number (guaranteed to be unique)
     patient = Patient.Manager.filter(phoneNumber=number)
-    message = client.messages.create( to="+1" + patient[0].phoneNumber, from_="+18737388248", body="I love you")
+    message = client.messages.create( 
+        to="+1" + patient[0].phoneNumber, 
+        from_="+18737388248", 
+        body="Someone is ready to see you now.")
     patient.delete()
 
     return HttpResponse('success')
