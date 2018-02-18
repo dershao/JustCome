@@ -42,3 +42,7 @@ def dequeue(request):
     queue.append(2)
 	message = client.messages.create( to="+16139864968", from_="+18737388248", body="Please work")
 	return HttpResponse("Please Work")
+<<<<<<< HEAD
+
+=======
+>>>>>>> e25cf3b807f8a181de2b03e304c83ba61bbdaade
