@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-a
+from .models import Patient
+
 queue = []
 
 # Create your views here.

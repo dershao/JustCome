@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $("#enque").click(function()
+  $("#enque").click(function() {
     $.ajax({
             url:"/JustCome/waitlist/data",
             type: "get",
