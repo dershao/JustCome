@@ -28,7 +28,7 @@ def enqueue(request):
 
     p.save()
 
-    return HttpResponseRedirect("success")
+    return HttpResponseRedirect("home")
 
 from django.http import HttpResponse
 #from .models import Patient
