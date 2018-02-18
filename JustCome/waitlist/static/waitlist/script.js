@@ -4,6 +4,10 @@ $(document).ready(function() {
     var id = $("#id").val();
     var number = $("#phoneNumber").val();
     var priority = $("#priority-select").val();
+    if(!id || !number || !priority){
+      alert("Form Incomplete.");
+      return;
+    }
     $.ajax({
             url:"/JustCome/waitlist/enqueue",
             type: "GET",
