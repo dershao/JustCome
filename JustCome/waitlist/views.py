@@ -14,24 +14,29 @@ client = Client(account_sid, auth_token)
 
 
 def enqueue(request):
+    #Get the information from the request
     id = request.GET.get("patientID")
     p = request.GET.get("priority")
     number = request.GET.get("phoneNumber")
 
+    #Create a new patient record
     patient = Patient(patientID=id, phoneNumber=number, priority=p)
     patient.save()
-    return HttpResponse({id:1})
+    return HttpResponse("Success")
 
 def dequeue(request):
+    #Get the information from the request
     number = request.GET.get("phoneNumber")
+
+    #Filter through the database via phone number (guaranteed to be unique)
     patient = Patient.Manager.filter(phoneNumber=number)
     message = client.messages.create( to="+1" + patient[0].phoneNumber, from_="+18737388248", body="I love you")
     patient.delete()
-    return HttpResponse({id:1})
+    return HttpResponse("Success")
 
 def home(request):
+    #Get the records for each of the priorities
     low = Patient.Manager.filter(priority="low")
     medium = Patient.Manager.filter(priority="medium")
     high = Patient.Manager.filter(priority="high")
-
     return render(request, "waitlist/DoctorMain.html", {"patient_low": low, "patient_medium":medium, "patient_high":high})

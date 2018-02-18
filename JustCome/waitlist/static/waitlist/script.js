@@ -4,6 +4,10 @@ $(document).ready(function() {
     var id = $("#id").val();
     var number = $("#phoneNumber").val();
     var priority = $("#priority-select").val();
+    if(!id || !number || !priority){
+      alert("Form Incomplete.");
+      return;
+    }
     $.ajax({
             url:"/JustCome/waitlist/enqueue",
             type: "get",
@@ -12,9 +16,7 @@ $(document).ready(function() {
               phoneNumber: number,
               priority: priority,
             },
-            dataType: "json",
             success: function(response) {
-              alert("Success");
               location.reload(true);
             },
             failure: function(xhr) {
@@ -50,7 +52,6 @@ function dequeue(phoneNumber){
       phoneNumber : phoneNumber,
     },
     type: "GET",
-    dataType: "json",
     success: function(data) {
       location.reload(true);
     },
