@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<!--ltf.suensir.idv.hk-->
+	<title>DoctorMain</title>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
+  <script src="{% static 'waitlist/script.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href='{% static "waitlist/DoctorStyle.css" %}'/>
+</head>
+
+
+<body>
+
+<!-- Nurse and doctor main page -->
+<div data-role="page" id="DoctorMain">
+
+	<!-- /header -->
+	<div data-role="header">
+		<h1>Doctor and Nurse Waitlist Page</h1>
+	</div>
+
+<!-- Grid -->
+<div class="ui-grid-c">
+  	<div class="ui-block-a"><b><center>High Priority</center></b>
+      <div>
+        {% for high in patient_high %}
+          <div class="patient">
+            <button class="patient_button">{{high.patientID}}</button>
+            <div class="dropdown-content">
+              <a onclick= "dequeue({{high.phoneNumber}})">Delete</a>
+              <a onclick="movePriorities({{high.patientID}}, 'low')">Change to Low Priority</a>
+              <a onclick="movePriorities({{high.patientID}}, 'medium')">Change to Medium Priority</a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+ 	  <div class="ui-block-b"><b><center>Medium Priority</center></b>
+     <div>
+       {% for medium in patient_medium %}
+         <div class="patient">
+           <button class="patient_button">{{medium.patientID}}</button>
+           <div class="dropdown-content">
+             <a onclick="dequeue({{medium.phoneNumber}})">Delete</a>
+             <a onclick="movePriorities({{medium.patientID}}, 'low')">Change to Low Priority</a>
+             <a onclick="movePriorities({{medium.patientID}}, 'high')">Change to High Priority</a>
+           </div>
+         </div>
+       {% endfor %}
+     </div>
+   </div>
+ 	 <div class="ui-block-c"><b><center>Low Priority</center></b>
+     <div>
+       {% for low in patient_low %}
+         <div class="patient">
+           <button class="patient_button">{{low.patientID}}</button>
+           <div class="dropdown-content">
+             <a onclick="dequeue({{low.phoneNumber}})">Delete</a>
+             <a onclick="movePriorities({{low.patientID}}, 'high')">Change to High Priority</a>
+             <a onclick="movePriorities({{low.patientID}}, 'medium')">Change to Medium Priority</a>
+           </div>
+         </div>
+       {% endfor %}
+     </div>
+   </div>
+
+ 	 <div class="ui-block-d">
+ 	 <!-- New Patient -->
+	<div class="row">
+		<div class="col-md-6 col-xs-12">
+		<form name="fm">
+			<center><h2>New Patient</h2></center>
+      <label for="id"><b>ID:</b></label>
+      <label for="textinput-hide" class="ui-hidden-accessible">Identification</label>
+      <input type="text" name="textinput-hide" id="id" placeholder="Identiication" value="">
+
+			<label for="tel"><b>Tel:</b></label>
+			<label for="textinput-hide" class="ui-hidden-accessible">Telephone</label>
+			<input type="text" name="textinput-hide" id="phoneNumber" placeholder="Telephone" value="">
+
+      <label for="priority"><b>Priority:</b></label>
+      <select id="priority-select" name="priority">
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+      </select>
+      <button type="button" id="submit" class="btn btn-success">Submit</button>
+		</form>
+	</div>
+	</div>
+</div>
+</body>
+</html>
