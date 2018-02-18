@@ -7,9 +7,6 @@ account_sid = "AC7be8973e6f7a945d7707b14d220bb20c"
 auth_token = "effe642c95803d5907f0ae04aa53fb13"
 client = Client(account_sid, auth_token)
 
-
-
-
 queue = []
 
 # Create your views here.
@@ -22,9 +19,11 @@ def data(request):
         queue.append(1)
     else:
         queue = queue[1:]
-    return HttpResponse("hi")
+    return render(request, 'waitlist/test.html')
 
 def dequeue(request):
-	if request.method == "GET":
-		message = client.messages.create( to="+16139864968", from_="+18737388248", body="Please work")
-	return render(request, "thign")
+    message = client.messages.create(
+        to="+16139864968",
+        from_="+18737388248",
+        body="Hello!")
+    return HttpResponse(status=200)

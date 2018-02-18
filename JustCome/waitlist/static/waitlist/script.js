@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  //THis is te code for enqueuing 
+  //THis is te code for enqueuing
   $("#enque").click(function() {
     $.ajax({
             url:"/JustCome/waitlist/data",
@@ -15,20 +15,18 @@ $(document).ready(function() {
             },
           });
   });
-//This is the code for dequeuing 
+//This is the code for dequeuing
   $("#dequeue").click(function() {
+    console.log("Dequeue button clicked");
     $.ajax({
-            url:"/JustCome/waitlist/dequeue",
+            url: "/JustCome/waitlist/dequeue",
             type: "GET",
             success: function(response) {
-              alert("Data sent");
+              alert(response);
             },
             failure: function(xhr) {
-              alert("failed");
+              alert(xhr);
             },
           });
   });
 });
-
-
-
