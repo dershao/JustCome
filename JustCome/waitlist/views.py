@@ -1,7 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Patient
-import json
+from django.http import HttpResponse
+#from .models import Patient
+from twilio.rest import Client
+
+account_sid = "AC7be8973e6f7a945d7707b14d220bb20c"
+auth_token = "effe642c95803d5907f0ae04aa53fb13"
+client = Client(account_sid, auth_token)
+
 
 # Create your views here.
 
@@ -30,19 +37,10 @@ def enqueue(request):
 
     return HttpResponseRedirect("home")
 
-from django.http import HttpResponse
-#from .models import Patient
-from twilio.rest import Client
-
-account_sid = "AC7be8973e6f7a945d7707b14d220bb20c"
-auth_token = "effe642c95803d5907f0ae04aa53fb13"
-client = Client(account_sid, auth_token)
 
 def dequeue(request):
-    queue.append(2)
+    global num
 	message = client.messages.create( to="+16139864968", from_="+18737388248", body="Please work")
-	return HttpResponse("Please Work")
-<<<<<<< HEAD
+    num = num - 1
 
-=======
->>>>>>> e25cf3b807f8a181de2b03e304c83ba61bbdaade
+	return HttpResponse("Please Work")
