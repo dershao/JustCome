@@ -42,3 +42,8 @@ def dequeue(request):
 	patient.delete()
 	head = head + 1;
 	return HttpResponse("Please Work")
+
+def nurse(request):
+    low = Patient.Manager.filter(priority="low")
+
+    return render(request, "waitlist/NurseMain.html", {"patient_low": low})

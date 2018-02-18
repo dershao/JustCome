@@ -33,4 +33,17 @@ $(document).ready(function() {
             },
           });
   });
+
+  $(".low_patient").click(function() {
+    $.ajax({
+            url: "/JustCome/waitlist/dequeue",
+            type: "GET",
+            success: function(data) {
+              alert(data);
+            },
+            failure: function(xhr) {
+              alert(xhr);
+            },
+          });
+    });
 });
