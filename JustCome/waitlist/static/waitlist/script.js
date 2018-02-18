@@ -1,6 +1,4 @@
 $(document).ready(function() {
-
-
   //THis is te code for enqueuing
   $("#submit").click(function() {
     var id = $("#phone").val();
@@ -19,18 +17,20 @@ $(document).ready(function() {
               alert("failed");
             },
           });
+    location.reload();
   });
 //This is the code for dequeuing
   $("#next").click(function() {
     $.ajax({
             url:"/JustCome/waitlist/dequeue",
-            type: "GET",
+            type: "get",
             success: function(data) {
-              alert(data);
+
             },
             failure: function(xhr) {
               alert("failed");
             },
           });
   });
+  location.reload();
 });
