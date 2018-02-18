@@ -7,6 +7,6 @@ class Patient(models.Model):
     patientID = models.TextField(max_length = 10)
     phoneNumber = models.TextField(max_length = 12)
     priority = models.TextField(max_length = 30)
-
-    #Rename the default model manager
+    index = models.PositiveIntegerField();
+    #Rename the default model manager from object
     Manager = models.Manager()

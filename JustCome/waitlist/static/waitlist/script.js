@@ -1,21 +1,23 @@
 $(document).ready(function() {
-
-
-
-  //THis is te code for enqueuing
+  //This is te code for enqueuing
   $("#submit").click(function() {
-    var id = $("#phone").val();
-    var priority = $("#priority").val();
+    var id = $("#id").val();
+    var number = $("#phoneNumber").val();
+    var priority = $("#priority-select").val();
+    if(!id || !number || !priority){
+      alert("Form Incomplete.");
+      return;
+    }
     $.ajax({
             url:"/JustCome/waitlist/enqueue",
             type: "get",
             data: {
               patientID: id,
+              phoneNumber: number,
               priority: priority,
             },
-            dataType: "json",
             success: function(response) {
-              alert("Data sent");
+              location.reload(true);
             },
             failure: function(xhr) {
               alert("failed");

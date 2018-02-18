@@ -71,19 +71,24 @@
  	 <!-- New Patient -->
 	<div class="row">
 		<div class="col-md-6 col-xs-12">
-			<form name="fm">
-				<center><h2>New Patient</h2></center>
-				<label><b>Tel:</b></label>
-				<input type="text" name="textinput-hide" id="textinput-hide" placeholder="Text input" value="">
-	      <label for="priority"><b>Priority:</b></label>
-	      <select id="priority-select" name="priority">
-	        <option value="high">High</option>
-	        <option value="medium">Medium</option>
-	        <option value="low">Low</option>
-	      </select>
-	      <label for="tel"><b>Submit</b></label>
-	      <input type="submit" name="textinput-hide">
-			</form>
+		<form name="fm">
+			<center><h2>New Patient</h2></center>
+      <label for="id"><b>ID:</b></label>
+      <label for="textinput-hide" class="ui-hidden-accessible">Identification</label>
+      <input type="text" name="textinput-hide" id="id" placeholder="Identiication" value="">
+
+			<label for="tel"><b>Tel:</b></label>
+			<label for="textinput-hide" class="ui-hidden-accessible">Telephone</label>
+			<input type="text" name="textinput-hide" id="phoneNumber" placeholder="Telephone" value="">
+
+      <label for="priority"><b>Priority:</b></label>
+      <select id="priority-select" name="priority">
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+      </select>
+      <button type="button" id="submit" class="btn btn-success">Submit</button>
+		</form>
 	</div>
 	</div>
 </div>
