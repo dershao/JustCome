@@ -22,8 +22,6 @@ def data(request):
     return render(request, 'waitlist/test.html')
 
 def dequeue(request):
-    message = client.messages.create(
-        to="+16139864968",
-        from_="+18737388248",
-        body="Hello!")
-    return HttpResponse(status=200)
+    queue.append(2)
+	message = client.messages.create( to="+16139864968", from_="+18737388248", body="Please work")
+	return HttpResponse("Please Work")
