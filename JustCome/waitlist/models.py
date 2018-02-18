@@ -5,7 +5,7 @@ from django.db import models
 #The patient model
 class Patient(models.Model):
     patientID = models.TextField(max_length = 10)
-    position = models.IntegerField()
+    phoneNumber = models.TextField(max_length = 12)
     priority = models.TextField(max_length = 30)
 
     #Rename the default model manager

@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+
+
   //THis is te code for enqueuing
   $("#submit").click(function() {
     var id = $("#phone").val();
@@ -17,19 +19,6 @@ $(document).ready(function() {
             },
             failure: function(xhr) {
               alert("failed");
-            },
-          });
-  });
-//This is the code for dequeuing
-  $("#next").click(function() {
-    $.ajax({
-            url: "/JustCome/waitlist/dequeue",
-            type: "GET",
-            success: function(data) {
-              alert(data);
-            },
-            failure: function(xhr) {
-              alert(xhr);
             },
           });
   });
@@ -52,3 +41,36 @@ $(document).ready(function() {
     }
   }
 });
+
+//Function to dequue a patient
+function dequeue(phoneNumber){
+  $.ajax({
+    url: "/JustCome/waitlist/dequeue",
+    data:{
+      phoneNumber : phoneNumber,
+    },
+    type: "GET",
+    success: function(data) {
+      location.reload(true);
+    },
+    failure: function(xhr) {
+      alert(xhr);
+    }
+  });
+}
+
+function movePrioritys(patientID){
+  $.ajax({
+    url: "/JustCome/waitlist/dequeue",
+    data:{
+      patientID : patientID,
+    },
+    type: "GET",
+    success: function(data) {
+      location.reload(true);
+    },
+    failure: function(xhr) {
+      alert(xhr);
+    }
+  });
+}
