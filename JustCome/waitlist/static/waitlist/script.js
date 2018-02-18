@@ -1,9 +1,10 @@
 $(document).ready(function() {
-  var id = $("#phone").val();
-  var priority = $("#priority").val();
+
 
   //THis is te code for enqueuing
-  $("#sumbit").click(function() {
+  $("#submit").click(function() {
+    var id = $("#phone").val();
+    var priority = $("#priority").val();
     $.ajax({
             url:"/JustCome/waitlist/enqueue",
             type: "get",
