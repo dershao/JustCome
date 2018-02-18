@@ -1,5 +1,4 @@
 from django.shortcuts import render
-<<<<<<< HEAD
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Patient
 import json
@@ -33,7 +32,6 @@ def enque(request):
 
 def success(request):
     return render(request, "waitlist/page.html")
-=======
 
 from django.http import HttpResponse
 #from .models import Patient
@@ -46,4 +44,3 @@ client = Client(account_sid, auth_token)
 def dequeue(request):
 	message = client.messages.create( to="+16139864968", from_="+18737388248", body="Please work")
 	return HttpResponse("Please Work")
->>>>>>> 50f3cd2c187913c0b9c3fccc7523adf5550619e1
