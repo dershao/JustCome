@@ -1,12 +1,17 @@
 $(document).ready(function() {
-  //THis is te code for enqueuing 
-  $("#enque").click(function() {
+  var id = $("#phone").val();
+  var priority = $("#priority").val();
+
+  //THis is te code for enqueuing
+  $("#sumbit").click(function() {
     $.ajax({
-            url:"/JustCome/waitlist/data",
+            url:"/JustCome/waitlist/enqueue",
             type: "get",
             data: {
-              delta: 1,
+              patientID: id,
+              priority: priority,
             },
+            dataType: "json",
             success: function(response) {
               alert("Data sent");
             },
@@ -15,8 +20,8 @@ $(document).ready(function() {
             },
           });
   });
-//This is the code for dequeuing 
-  $("#dequeue").click(function() {
+//This is the code for dequeuing
+  $("#next").click(function() {
     $.ajax({
             url:"/JustCome/waitlist/dequeue",
             type: "GET",
@@ -29,6 +34,3 @@ $(document).ready(function() {
           });
   });
 });
-
-
-
