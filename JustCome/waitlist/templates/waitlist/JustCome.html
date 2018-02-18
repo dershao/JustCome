@@ -18,6 +18,16 @@
 			{% for low in patient_low %}
 				<button>{{low.patientID}}</button>
 			{% endfor %}
+		</div> <br>
+		<div>
+			{% for medium in patient_medium %}
+				<button>{{medium.patientID}}</button>
+			{% endfor %}
+		</div>
+		<div> <br>
+			{% for high in patient_high %}
+				<button>{{high.patientID}}</button>
+			{% endfor %}
 		</div>
 		<div></div>
 		<div></div>
