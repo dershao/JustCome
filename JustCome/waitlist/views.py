@@ -6,10 +6,10 @@ import json
 # Create your views here.
 
 def home(request):
-    return render(request, "waitlist/home.html")
+    return render(request, "waitlist/JustCome.html")
 
 num = 0
-def enque(request):
+def enqueue(request):
     id = request.GET.get("patientID")
     p = request.GET.get("priority")
 
@@ -29,9 +29,6 @@ def enque(request):
     p.save()
 
     return HttpResponseRedirect("success")
-
-def success(request):
-    return render(request, "waitlist/page.html")
 
 from django.http import HttpResponse
 #from .models import Patient

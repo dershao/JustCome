@@ -1,7 +1,9 @@
+{% load static %}
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Hospital UI</title>
+	 <script src="{% static 'waitlist/script.js' %}"></script>
+		<title>Hospital UI</title>
 <style>
 body{
 	background-color: #8BC34A
@@ -13,21 +15,22 @@ h1{
 	front-family: "Impact, Charcoal, sans-serif";
 
 	}
-	
+
 h3{
 	color: white;
-	text-align: center;	
+	text-align: center;
 	}
-	
-</style>	
+
+</style>
 </head>
-	
+
 	<body>
 	<h1>Just Coming Center!!!</h1>
-	<h3>Phone no. <input type= "text"></h3>
-	<center><input type="submit" value="Submit"><br>
-		<input type="submit" value= "Next">
+	<h3>Phone no. <input id="phone" type= "text"></h3>
+	<h3>Priority  <input id="priority" type="text"></h3>
+	<center><input type="submit" id="sumbit" value="Submit"><br>
+		<input type="submit" id="next" value="Next">
 	</center>
-	
+
 	</body>
 </html>

@@ -1,11 +1,11 @@
 $(document).ready(function() {
-  var id = "6131231234"
-  var priority = "high"
+  var id = $("#phone").val();
+  var priority = $("#priority").val();
 
-  //THis is te code for enqueuing 
-  $("#enque").click(function() {
+  //THis is te code for enqueuing
+  $("#sumbit").click(function() {
     $.ajax({
-            url:"/JustCome/waitlist/enque",
+            url:"/JustCome/waitlist/enqueue",
             type: "get",
             data: {
               patientID: id,
@@ -21,7 +21,7 @@ $(document).ready(function() {
           });
   });
 //This is the code for dequeuing
-  $("#dequeue").click(function() {
+  $("#next").click(function() {
     $.ajax({
             url:"/JustCome/waitlist/dequeue",
             type: "GET",
