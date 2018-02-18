@@ -1,12 +1,17 @@
 $(document).ready(function() {
+  var id = $("#phone").val();
+  var priority = $("#priority").val();
+
   //THis is te code for enqueuing
-  $("#enque").click(function() {
+  $("#sumbit").click(function() {
     $.ajax({
-            url:"/JustCome/waitlist/data",
+            url:"/JustCome/waitlist/enqueue",
             type: "get",
             data: {
-              delta: 1,
+              patientID: id,
+              priority: priority,
             },
+            dataType: "json",
             success: function(response) {
               alert("Data sent");
             },
@@ -16,8 +21,7 @@ $(document).ready(function() {
           });
   });
 //This is the code for dequeuing
-  $("#dequeue").click(function() {
-    console.log("Dequeue button clicked");
+  $("#next").click(function() {
     $.ajax({
             url: "/JustCome/waitlist/dequeue",
             type: "GET",
