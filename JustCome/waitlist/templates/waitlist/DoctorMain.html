@@ -8,7 +8,7 @@
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
   <script src="{% static 'waitlist/script.js' %}"></script>
-	<link rel="stylesheet" herf="style.css"/>
+	<link rel="stylesheet" type="text/css" href='{% static "waitlist/DoctorStyle.css" %}'/>
 </head>
 
 
@@ -30,7 +30,7 @@
           <div class="patient">
             <button class="patient_button">{{high.patientID}}</button>
             <div class="dropdown-content">
-              <a href="">Delete</a>
+              <a href = "" onclick= "dequeue({{high.phoneNumber}})">Delete</a>
               <a href="">Change to Low Priority</a>
               <a href="">Change to Medium Priority</a>
             </div>
@@ -44,7 +44,7 @@
          <div class="patient">
            <button class="patient_button">{{medium.patientID}}</button>
            <div class="dropdown-content">
-             <a href="">Delete</a>
+             <a href = "" onclick= "dequeue({{medium.phoneNumber}})">Delete</a>
              <a href="">Change to Medium Priority</a>
              <a href="">Change to High Priority</a>
            </div>
@@ -58,7 +58,7 @@
          <div class="patient">
            <button class="patient_button">{{low.patientID}}</button>
            <div class="dropdown-content">
-             <a href="">Delete</a>
+             <a href = "" onclick= "dequeue({{low.phoneNumber}})">Delete</a>
              <a href="">Change to High Priority</a>
              <a href="">Change to Medium Priority</a>
            </div>
@@ -73,6 +73,9 @@
 		<div class="col-md-6 col-xs-12">
 		<form name="fm">
 			<center><h2>New Patient</h2></center>
+      <label for="tel"><b>ID:</b></label>
+      <label for="textinput-hide" class="ui-hidden-accessible">Identification</label>
+      <input type="text" name="textinput-hide" id="textinput-hide" placeholder="Text input" value="">
 			<label for="tel"><b>Tel:</b></label>
 			<label for="textinput-hide" class="ui-hidden-accessible">Telephone</label>
 			<input type="text" name="textinput-hide" id="textinput-hide" placeholder="Text input" value="">
@@ -83,34 +86,5 @@
 	</div>
 	</div>
 </div>
-<style>
-
-.patient {
-  margin: 10px 10px 10px 10px;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  overflow: auto;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-}
-
-.dropdown a:hover {
-  background-color: #ddd;
-}
-
-</style>
-
-
 </body>
 </html>
