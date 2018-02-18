@@ -1,6 +1,5 @@
 $(document).ready(function() {
 
-
   //THis is te code for enqueuing
   $("#submit").click(function() {
     var id = $("#phone").val();
