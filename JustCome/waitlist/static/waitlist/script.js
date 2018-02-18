@@ -20,8 +20,8 @@ $(document).ready(function() {
     $.ajax({
             url:"/JustCome/waitlist/dequeue",
             type: "GET",
-            success: function(response) {
-              alert("Data sent");
+            success: function(data) {
+              alert(data);
             },
             failure: function(xhr) {
               alert("failed");

@@ -25,6 +25,5 @@ def data(request):
     return HttpResponse("hi")
 
 def dequeue(request):
-	if request.method == "GET":
-		message = client.messages.create( to="+16139864968", from_="+18737388248", body="Please work")
-	return render(request, "thign")
+	message = client.messages.create( to="+16139864968", from_="+18737388248", body="Please work")
+	return HttpResponse("Please Work")
