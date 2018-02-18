@@ -1,37 +1,25 @@
 {% load static %}
 <!DOCTYPE HTML>
 <html>
-<head>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
-	<script src="{% static 'waitlist/script.js' %}"></script>
-		<title>Hospital UI</title>
-<style>
-body{
-	background-color: #8BC34A
-}
-
-h1{
-	color:white;
-	text-align: center;
-	front-family: "Impact, Charcoal, sans-serif";
-
-	}
-
-h3{
-	color: white;
-	text-align: center;
-	}
-
-</style>
-</head>
-
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+		<script src="{% static 'waitlist/script.js' %}"></script>
+			<title>Just Come !!!!</title>
+	</head>
 	<body>
+		<body>
 	<h1>Just Coming Center!!!</h1>
-	<h3>Phone no. <input id="phone" type= "text"></h3>
-	<h3>Priority  <input id="priority" type="text"></h3>
-	<center><input type="submit" id="submit" value="Submit"><br>
-		<input type="submit" id="next" value="Next">
+	<h3>Phone no. <input id="phone" type="text"></h3>
+	<h3>Priority <input id="priority" type="text"></h3>
+	<center><input id="submit" type="submit" value="Submit"><br>
+		<input id="next" type="submit" value= "Next">
 	</center>
-
+		<div>
+			{% for low in patient_low %}
+				<button>{{low.patientID}}</button>
+			{% endfor %}
+		</div>
+		<div></div>
+		<div></div>
 	</body>
 </html>
