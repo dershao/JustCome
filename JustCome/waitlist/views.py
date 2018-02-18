@@ -59,12 +59,12 @@ def home(request):
     low = Patient.Manager.filter(priority="low")
     medium = Patient.Manager.filter(priority="medium")
     high = Patient.Manager.filter(priority="high")
-    return render(request, "waitlist/DoctorMain.html", {"patient_low": low, "patient_medium":medium, "patient_high":high})
+    return render(request, "waitlist/DoctorMain1.html", {"patient_low": low, "patient_medium":medium, "patient_high":high})
 
 def move(request):
     priority = request.GET.get("priority")
-    patientID = request.GET.get("patientID")
+    phoneNumber = request.GET.get("phoneNumber")
 
-    patient = Patient.Manager.filter(patientID=patientID).update(priority=priority)
+    patient = Patient.Manager.filter(phoneNumber=phoneNumber).update(priority=priority)
 
     return HttpResponse("Response")

@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.css" />
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
+	<link rel="stylesheet" type="text/css" href='{% static "waitlist/jquery.mobile.flatui.css" %}'/>
   <script src="{% static 'waitlist/script.js' %}"></script>
 	<link rel="stylesheet" type="text/css" href='{% static "waitlist/DoctorStyle.css" %}'/>
 </head>
@@ -19,7 +20,7 @@
 
 	<!-- /header -->
 	<div data-role="header">
-		<h1>Doctor and Nurse Waitlist Page</h1>
+		<h1>Administrator Page</h1>
 	</div>
 
 <!-- Grid -->
@@ -31,8 +32,8 @@
             <button class="patient_button">{{high.patientID}}</button>
             <div class="dropdown-content">
               <a onclick= "dequeue({{high.phoneNumber}})">Delete</a>
-              <a onclick="movePriorities({{high.patientID}}, 'low')">Change to Low Priority</a>
-              <a onclick="movePriorities({{high.patientID}}, 'medium')">Change to Medium Priority</a>
+              <a onclick="movePriorities({{high.phoneNumber}}, 'low')">Change to Low Priority</a>
+              <a onclick="movePriorities({{high.phoneNumber}}, 'medium')">Change to Medium Priority</a>
             </div>
           </div>
         {% endfor %}
@@ -45,8 +46,8 @@
            <button class="patient_button">{{medium.patientID}}</button>
            <div class="dropdown-content">
              <a onclick="dequeue({{medium.phoneNumber}})">Delete</a>
-             <a onclick="movePriorities({{medium.patientID}}, 'low')">Change to Low Priority</a>
-             <a onclick="movePriorities({{medium.patientID}}, 'high')">Change to High Priority</a>
+             <a onclick="movePriorities({{medium.phoneNumber}}, 'low')">Change to Low Priority</a>
+             <a onclick="movePriorities({{medium.phoneNumber}}, 'high')">Change to High Priority</a>
            </div>
          </div>
        {% endfor %}
@@ -59,8 +60,8 @@
            <button class="patient_button">{{low.patientID}}</button>
            <div class="dropdown-content">
              <a onclick="dequeue({{low.phoneNumber}})">Delete</a>
-             <a onclick="movePriorities({{low.patientID}}, 'high')">Change to High Priority</a>
-             <a onclick="movePriorities({{low.patientID}}, 'medium')">Change to Medium Priority</a>
+             <a onclick="movePriorities({{low.phoneNumber}}, 'high')">Change to High Priority</a>
+             <a onclick="movePriorities({{low.phoneNumber}}, 'medium')">Change to Medium Priority</a>
            </div>
          </div>
        {% endfor %}
@@ -70,7 +71,10 @@
  	 <div class="ui-block-d">
  	 <!-- New Patient -->
 	<div class="row">
+		<br/>
+		<br/>
 		<div class="col-md-6 col-xs-12">
+			<center><img src="{% static "waitlist/ImpatientBlue.png"%}" class="rounded mx-auto d-block" alt="Logo" width="110" height="40"></center>
 		<form name="fm">
 			<center><h2>New Patient</h2></center>
       <label for="id"><b>ID:</b></label>

@@ -58,11 +58,12 @@ function dequeue(phoneNumber){
   });
 }
 
-function movePriorities(patientID, priority){
+function movePriorities(phoneNumber, priority){
+  console.log("Move Priorities");
   $.ajax({
     url: "/JustCome/waitlist/move",
     data:{
-      patientID : patientID,
+       phoneNumber: phoneNumber,
       priority : priority
     },
     type: "GET",
