@@ -41,12 +41,12 @@ $(document).ready(function() {
 
   window.onclick = function(event) {
     if (!event.target.matches('.patient_button')) {
-      var dropdowns = document.getElementByClassName("dropdown-content");
+      var dropdowns = document.getElementsByClassName(".dropdown-content");
       var i;
       for (i = 0; i < dropdowns.length; i++) {
         var openDropDown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
+        if (openDropDown.classList.contains('show')) {
+          openDropDown.classList.remove('show');
         }
       }
     }

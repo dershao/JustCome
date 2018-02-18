@@ -8,7 +8,7 @@
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
   <script src="{% static 'waitlist/script.js' %}"></script>
-	<link rel="stylesheet" herf="style.css"/>
+
 </head>
 
 
@@ -24,7 +24,7 @@
 
 <!-- Grid -->
 <div class="ui-grid-c">
-  	<div class="ui-block-a"><b>High Priority</b>
+  	<div class="ui-block-a"><b><center>High Priority</center></b>
       <div>
         {% for high in patient_high %}
           <div class="patient">
@@ -38,7 +38,7 @@
         {% endfor %}
       </div>
     </div>
- 	 <div class="ui-block-b"><b>Medium Priority</b>
+ 	 <div class="ui-block-b"><b><center>Medium Priority</center></b>
      <div>
        {% for medium in patient_medium %}
          <div class="patient">
@@ -52,7 +52,7 @@
        {% endfor %}
      </div>
    </div>
- 	 <div class="ui-block-c"><b>Low Priority</b>
+ 	 <div class="ui-block-c"><b><center>Low Priority</center></b>
      <div>
        {% for low in patient_low %}
          <div class="patient">
@@ -73,12 +73,16 @@
 		<div class="col-md-6 col-xs-12">
 		<form name="fm">
 			<center><h2>New Patient</h2></center>
-			<label for="tel"><b>Tel:</b></label>
-			<label for="textinput-hide" class="ui-hidden-accessible">Telephone</label>
+			<label><b>Tel:</b></label>
 			<input type="text" name="textinput-hide" id="textinput-hide" placeholder="Text input" value="">
-      <label for="tel"><b>Priority:</b></label>
-			<label for="textinput-hide" class="ui-hidden-accessible">Priority</label>
-			<input type="text" name="textinput-hide" id="textinput-hide" placeholder="Text input" value="">
+      <label for="priority"><b>Priority:</b></label>
+      <select id="priority-select" name="priority">
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+      </select>
+      <label for="tel"><b>Submit</b></label>
+      <input type="submit" name="textinput-hide">
 		</form>
 	</div>
 	</div>
